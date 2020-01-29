@@ -1,0 +1,9 @@
+
+# output of html file
+*.html
+# javascript libraries from xaringan
+/libs/
+
+# Remove R project files
+.Rproj.user/
+*.Rproj

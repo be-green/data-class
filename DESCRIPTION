@@ -1,0 +1,17 @@
+Package: data-class
+Type: Class
+Title: Data class requirements
+Version: 0.0.1
+Remotes: rstudio/bookdown
+Imports: 
+    data.table,
+    magrittr,
+    stringr,
+    xts,
+    jsonlite,
+    xml2,
+    ggplot2,
+    plotly,
+    leaflet,
+    DT,
+    shiny
