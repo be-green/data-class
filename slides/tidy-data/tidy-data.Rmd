@@ -1,0 +1,77 @@
+---
+title: "Tidy Data"
+author: "Brice Green"
+institute: "University of Texas at Austin"
+date: "2020/01/19 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ['default', 'metropolis-fonts']
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+<style type="text/css">
+.big {
+    font-size: 40px;
+}
+.remark-slide-content {
+  font-size: 30px;
+}
+.middle {
+  margin-top: 47%;
+  font-size: 40px;
+  font-weight: bold;
+}
+</style>
+
+# Why learn this stuff?
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+.big[
+> 80% of a researcher's time is spent acquiring, cleaning and organizing data<sup>1</sup>
+]
+
+
+.footnote[
+[1] Source: https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#3f04d4576f63
+]
+---
+
+# Why learn this stuff?
+
+.big[
+Data fundamentals are not taught in any statistics courses in undergraduate or graduate schools<sup>1</sup>
+]
+
+.footnote[
+[1] Source: me, with a touch of hyperbole
+]
+
+---
+
+# Today:
+
+- A framework for structuring data
+- Basic computer science concepts behind it
+- Examples and practice
+
+---
+
+.middle[
+Tidy Data & Key Value pairs
+]
+
+---
+
+# Tidy Data
+
+.big[
+1. Every column is a variable
+2. Every row is an observation
+]
