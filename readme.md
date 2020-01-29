@@ -66,7 +66,7 @@ Reproducible Research Frameworks:
 - [Brilliant notebooks for shareable analysis](https://jupyter.org/)
 
 Coding resources:
-- [Someone who has already solved your problem](stackoverflow.com)
+- [Someone who has already solved your problem](https://stackoverflow.com)
 
 Misc:
 - [Rolling joins with data.table](https://www.gormanalysis.com/blog/r-data-table-rolling-joins/)
