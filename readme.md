@@ -4,7 +4,7 @@ These course materials are designed for an introduction to computation and worki
 
 Since I'm most comfortable programming in R, this class will mostly be taught using R.
 
-Definitely a WIP; if you have thoughts/suggestions/additions please open a github issue.
+Definitely a work in progress; if you have thoughts/suggestions/additions please open a github issue.
 
 # Topics
 
@@ -41,7 +41,36 @@ This is in no particular order, grouped by topic. As lectures come together I'll
 - Web data structures (JSON & XML)
 
 ## Maybe other stuff
+- Developing packages?
+
+# Other resources
+
+Here are other good guides and tools people have put together. Most of my material is either learned or conceptually in debt to these things. If I've missed something please submit an issue or pull request!
+
+Learning R:
+- [R for data science, Hadley Wickham](https://r4ds.had.co.nz/)
+- [Advanced R, Hadley Wickham](http://adv-r.had.co.nz/)
+- [R packages, Hadley Wickham](https://r-pkgs.org/)
+
+Specific tools:
+- [ggplot2 website](https://ggplot2.tidyverse.org/)
+- [pipes with magrittr](https://magrittr.tidyverse.org/)
+- [Introduction to data.table, the best software for working with data in memory](http://datatable.r-forge.r-project.org/datatable-intro.pdf)
+- [plotly for interactive visualization](https://plot.ly/r/getting-started/)
+    - [Python version](https://plot.ly/python/getting-started/)
+- [Time series with xts](https://joshuaulrich.github.io/xts/)
+
+Reproducible Research Frameworks:
+- [Intelligent project structure made easy](https://drivendata.github.io/cookiecutter-data-science/)
+- [The all-in-one solution for ensuring reproducibility](https://rmarkdown.rstudio.com/)
+- [Brilliant notebooks for shareable analysis](https://jupyter.org/)
+
+Coding resources:
+- [Someone who has already solved your problem](stackoverflow.com)
+
+Misc:
+- [Rolling joins with data.table](https://www.gormanalysis.com/blog/r-data-table-rolling-joins/)
 
 # License
 
-The content of this project itself is licensed under the [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) license, and the underlying source code used to format and display that content is licensed under the [MIT license](LICENSE.md).
+The content of this project itself is licensed under the [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) license, and the underlying source code used to generate that content is licensed under the [MIT license](LICENSE.md).
