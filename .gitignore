@@ -7,3 +7,4 @@ libs
 # Remove R project files
 .Rproj.user/
 *.Rproj
+.Rhistory
