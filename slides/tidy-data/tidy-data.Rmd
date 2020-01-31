@@ -2,7 +2,7 @@
 title: "Tidy Data"
 author: "Brice Green"
 institute: "University of Texas at Austin"
-date: "2020/01/19 (updated: `r Sys.Date()`)"
+date: "2020/01/29 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -11,6 +11,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      ratio: 16:10
 ---
 
 <style type="text/css">
@@ -25,53 +26,218 @@ output:
   font-size: 40px;
   font-weight: bold;
 }
+.small {
+  font-size: 15px;
+}
 </style>
 
-# Why learn this stuff?
 
-```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
+```{r setup, include = F}
+
+library(knitr)
+library(dplyr) # made for this stuff!
+opts_chunk$set(autodep = T, message = F)
+
 ```
-
-.big[
-> 80% of a researcher's time is spent acquiring, cleaning and organizing data<sup>1</sup>
-]
-
-
-.footnote[
-[1] Source: https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#3f04d4576f63
-]
----
-
-# Why learn this stuff?
-
-.big[
-Data fundamentals are not taught in any statistics courses in undergraduate or graduate schools<sup>1</sup>
-]
-
-.footnote[
-[1] Source: me, with a touch of hyperbole
-]
-
----
 
 # Today:
 
+- _VERY_ brief programming materials & review 
 - A framework for structuring data
 - Basic computer science concepts behind it
 - Examples and practice
 
 ---
+class: inverse
 
 .middle[
-Tidy Data & Key Value pairs
+Programming basics
 ]
 
 ---
+# Programming basics
+## Assignment
+* `<-` and `=` assign variables
+* case _really_ matters
+* variables hold the values you give them
+
+---
+# Programming basics
+## Objects
+
+* `c()` creates a vector
+* `list()` creates a list
+* `data.frame()` creates a list of vectors (a table of sorts)
+* `matrix()` creates a matrix
+* Anything where `x` is a variable that goes `f(x)` is a function
+
+---
+# Classes
+
+Classes indicate what kind of thing a variable is. R guesses this automatically, and sometimes it gets it wrong. The basic classes are:
+
+* character for words
+* numeric for numbers
+* logical for true/false statements
+
+
+---
+
+class:inverse
+
+.middle[
+Tidy Data
+]
+
+---
+# Tidy Data
+> Happy families are all alike; every
+unhappy family is unhappy in its own
+way.
+
+Leo Tolstoy
+
+---
+
 
 # Tidy Data
+## Definitions
+
+Dataset: collection of _values_, usually numbers or strings
+
+Variable: values that measure the same underlying attribute across units
+
+Observation: all values measured on the same unit
+
+---
+# Tidy Data
+## Principles
 
 .big[
 1. Every column is a variable
 2. Every row is an observation
+3. Every type of observational unit is a table
 ]
+
+---
+# Not Tidy
+
+|Date       | Alice| Bob| Charlie|
+|:----------|-----:|---:|-------:|
+|2019-01-01 |     2|   3|      17|
+|2020-01-01 |     5|   2|       4|
+
+---
+# Tidied
+
+|Date       |Person      | value|
+|:----------|:-----------|-----:|
+|2019-01-01 |Alice       |     2|
+|2020-01-01 |Alice       |     5|
+|2019-01-01 |Bob         |     3|
+|2020-01-01 |Bob         |     2|
+|2019-01-01 |Charlie     |    17|
+|2020-01-01 |Charlie     |     4|
+
+---
+# Not Tidy
+
+.small[
+```{r echo = F}
+
+library(data.table)
+tb <- fread("https://raw.githubusercontent.com/hadley/tidy-data/master/data/billboard.csv")
+
+
+kable(head(tb[, 1:10], 10), format = "markdown")
+```
+]
+
+---
+# Tidied
+
+.small[
+|Date| Artist| Length| Name | Date | Week | Rank
+|:---|:------|:-----|:---------------|-----:|----:|-----|-----:|
+|2000 | 2 Pac | 4:22 | Baby Don't Cry | 2000-02-26 |   1 |  87 | 
+|2000 | 2 Pac | 4:22 | Baby Don't Cry | 2000-03-04 |   2 |  82 | 
+|2000 | 2 Pac | 4:22 | Baby Don't Cry | 2000-03-11 |   3 |  72 | 
+|2000 | 2 Pac | 4:22 | Baby Don't Cry | 2000-03-18 |   4 |  77 | 
+|2000 | 2 Pac | 4:22 | Baby Don't Cry | 2000-03-25 |   5 |  87 | 
+|2000 | 2 Pac | 4:22 | Baby Don't Cry | 2000-04-01 |   6 |  94 | 
+|2000 | 2 Pac | 4:22 | Baby Don't Cry | 2000-04-08 |   7 |  99 | 
+|2000 | 2Ge+her | 3:15 | The Hardest Part ... | 2000-09-02 |   1 |  91 | 
+|2000 | 2Ge+her | 3:15 | The Hardest Part ... | 2000-09-09 |   2 |  87 | 
+]
+---
+# Working with Tidy Data
+
+The four _verbs_ of data analysis:
+
+* Filter: subsetting or removing observations
+* Transform: adding or modifying variables
+* Aggregate: collapsing multiple values into a single value
+* Sort: re-ordering observations
+
+---
+# Working with Tidy Data
+
+Let's see some code examples, then work through a real one.
+
+Create the data.frame (this is what you saw earlier).
+
+```{r, autodep=T}
+tidied_data <- data.frame(
+  Date = as.Date(rep(c("2019-01-01", "2020-01-01"), 3)),
+  Person = c("Alice","Alice", "Bob", "Bob","Charlie" ,"Charlie"), 
+  Value = c(2, 5, 3, 2, 17, 4)
+)
+```
+---
+# Filtering
+
+
+```{r eval = F, autodep=T}
+library(dplyr) # made for this stuff!
+filter(tidied_data, Date == as.Date("2020-01-01"))
+```
+
+```{r eval = T, echo = F, autodep=T}
+library(dplyr) # made for this stuff!
+kable(filter(tidied_data, Date == as.Date("2020-01-01")), format = "markdown")
+```
+
+---
+# Transforming
+
+What if we want log values? Now it is just one column instead of 3.
+
+
+```{r eval = F, autodep = T}
+tidied_data$LogValue <- log(tidied_data$Value)
+```
+
+---
+# Aggregating
+
+Average observation of log values by date:
+
+```{r eval = F}
+
+group_by(tidied_data, Date) %>% 
+  summarise(Avg = mean(Value))
+
+```
+
+```{r eval = T, echo = F}
+
+group_by(tidied_data, Date) %>% 
+  summarise(Avg = mean(Value)) %>% 
+  kable(format = "markdown", digits = 2)
+
+```
+
+---
+
+Let's learn how to tidy data, and do some analysis!
+

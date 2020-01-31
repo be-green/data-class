@@ -1,0 +1,142 @@
+---
+title: "Why Bother"
+subtitle: "A brief pitch"
+author: "Brice Green"
+institute: "University of Texas at Austin"
+date: "2020/01/19 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ['default', 'metropolis-fonts']
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+<style type="text/css">
+.big {
+    font-size: 40px;
+}
+.remark-slide-content {
+  font-size: 30px;
+}
+.middle {
+  margin-top: 47%;
+  font-size: 40px;
+  font-weight: bold;
+}
+</style>
+
+# A bit about me
+
+- Previously worked on a team of data scientists and financial engineers
+- Built 5 or 6 R packages, primarily focused on research pipelines, data, visualization
+- Experience with building interactive web apps, large databases
+- Experience training business folks how to program to make their lives better
+
+---
+
+# Why learn this stuff?
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+.big[
+> 80% of a researcher's time is spent acquiring, cleaning and organizing data<sup>1</sup>
+]
+
+I would argue this is a conservative estimate
+
+
+.footnote[
+[1] Source: https://www.forbes.com/sites/gilpress/2016/03/23/data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/#3f04d4576f63
+]
+---
+
+# Why learn this stuff?
+
+.big[
+Data fundamentals are not taught in any statistics courses in undergraduate or graduate schools<sup>1</sup>
+]
+
+.footnote[
+[1] Source: me, with a touch of hyperbole
+]
+
+---
+class:inverse
+
+.middle[
+Research is _complicated_
+]
+
+---
+# Examples
+
+> You end up with a directory that has 75 .do files, and you don't remember which one does what!
+
+---
+# Examples
+
+> An RA deletes your critical data or your computer crashes with all of your code!
+
+---
+# Examples
+
+> You find data issues that are fundamental to your analysis after you've written the paper.
+
+
+---
+class:inverse
+
+.middle[
+Research is _collaborative_
+]
+---
+
+# Examples
+
+> You are working with someone else, and both of you are working on code at the same time. How do you make sure it works?
+
+---
+# Examples
+
+> An RA leaves your lab and you have no idea how to transition their work
+
+---
+# Examples
+
+> You come back to a project you haven't thought about for 5 years and have no idea what you were doing.
+
+---
+class:inverse
+
+.middle[
+Research is _iterative_
+]
+
+---
+# Examples
+
+> A colleague suggests to you that you didn't account for an effect, so now you need to run your regressions again.
+
+---
+# Examples
+
+> After looking at your model output, it seems like you need to add in more features.
+
+---
+# Examples
+
+> You have a new idea, and want to use the same dataset for a new paper.
+
+---
+
+# Takeaways: 
+
+Learning tools can create
+- Safety with code and data
+- Easier collaboration with others
+- Faster and better research
