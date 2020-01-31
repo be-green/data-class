@@ -67,6 +67,7 @@ Reproducible Research Frameworks:
 
 Coding resources:
 - [Someone who has already solved your problem](https://stackoverflow.com)
+- [learn git, the only version control worth your time](https://git-scm.com/book/en/v2)
 
 Misc:
 - [Rolling joins with data.table](https://www.gormanalysis.com/blog/r-data-table-rolling-joins/)
