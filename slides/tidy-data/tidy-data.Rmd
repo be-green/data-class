@@ -80,7 +80,6 @@ Classes indicate what kind of thing a variable is. R guesses this automatically,
 * numeric for numbers
 * logical for true/false statements
 
-
 ---
 
 class:inverse

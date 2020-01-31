@@ -1,6 +1,5 @@
 ---
-title: "Why Bother"
-subtitle: "A brief pitch"
+title: "Why Bother Learning to Program?"
 author: "Brice Green"
 institute: "University of Texas at Austin"
 date: "2020/01/19 (updated: `r Sys.Date()`)"
@@ -12,6 +11,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      ratio: 16:10
 ---
 
 <style type="text/css">
@@ -32,8 +32,8 @@ output:
 
 - Previously worked on a team of data scientists and financial engineers
 - Built 5 or 6 R packages, primarily focused on research pipelines, data, visualization
-- Experience with building interactive web apps, large databases
-- Experience training business folks how to program to make their lives better
+- Created interactive web apps, large databases
+- Trained business folks how to program to make their lives better
 
 ---
 
@@ -140,3 +140,13 @@ Learning tools can create
 - Safety with code and data
 - Easier collaboration with others
 - Faster and better research
+
+---
+
+# Let's go!
+
+* Install R... (https://www.r-project.org/)
+* ...and RStudio (https://rstudio.com/products/rstudio/download/)
+* Install git (https://git-scm.com/)
+
+
