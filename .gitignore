@@ -8,3 +8,7 @@ libs
 .Rproj.user/
 *.Rproj
 .Rhistory
+
+# large files to be ignored
+data/tidy-data/p16i6.dta
+*.zip
