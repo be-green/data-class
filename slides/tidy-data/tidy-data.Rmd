@@ -195,7 +195,6 @@ tidied_data <- data.frame(
 ---
 # Filtering
 
-
 ```{r eval = F, autodep=T}
 library(dplyr) # made for this stuff!
 filter(tidied_data, Date == as.Date("2020-01-01"))
@@ -210,7 +209,6 @@ kable(filter(tidied_data, Date == as.Date("2020-01-01")), format = "markdown")
 # Transforming
 
 What if we want log values? Now it is just one column instead of 3.
-
 
 ```{r eval = F, autodep = T}
 tidied_data$LogValue <- log(tidied_data$Value)
