@@ -35,6 +35,3 @@ iris %>%
   # create small multiples by species
   facet_wrap(~Species, ncol = 1)
 
-
-
-
