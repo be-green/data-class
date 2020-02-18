@@ -1,0 +1,164 @@
+---
+title: "The Layered Grammar of Graphis"
+author: "Brice Green"
+institute: "University of Texas at Austin"
+date: "2020/02/18 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+  lib_dir: libs
+css: ['default', 'metropolis-fonts']
+nature:
+  highlightStyle: github
+highlightLines: true
+countIncrementalSlides: false
+ratio: 16:10
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(
+  fig.height = 5, 
+  fig.width = 10
+)
+
+```
+
+<style type="text/css">
+.big {
+  font-size: 40px;
+}
+.remark-slide-content {
+  font-size: 30px;
+}
+.middle {
+  margin-top: 47%;
+  font-size: 40px;
+  font-weight: bold;
+}
+</style>
+
+# What is a "grammar" of graphics?
+.big[
+> The fundamental principles
+or rules of an art or science
+]
+-Oxford English Dictionary
+
+---
+# What structures are in the grammar?
+
+- Aesthetics: dimensions of representation
+  * X axis
+  * Y axis
+  * Color
+- Geometries: forms of representation
+  * Bars
+  * Points
+- Scales: a mapping from a variable to a representation
+  * Color
+  * Location
+  
+---
+# Using the grammar
+
+These structures are layered on top of one another!
+
+```{r eval = FALSE, message=F, warning = F}
+library(ggplot2)
+ggplot(iris, aes(x = Sepal.Length, 
+                 y = Petal.Length, 
+                 color = Species)) +
+  geom_point()
+```
+
+---
+# Using the grammar
+
+These structures are layered on top of one another!
+
+```{r echo = F, message=F, warning = F}
+library(ggplot2)
+ggplot(iris, aes(x = Sepal.Length, 
+                 y = Petal.Length, 
+                 color = Species)) +
+  geom_point()
+```
+
+---
+# Breaking this down
+
+This part creates the basic ggplot, the data argument tells it which variables to use:
+```
+ggplot(data = iris)
+```
+
+---
+# Breaking this down
+
+The `aes()` call generates the "aesthetics," the dimensions of representation:
+
+```{r eval = F}
+ggplot(data = iris, 
+       aes(x = Sepal.Length, 
+           y = Petal.Length, 
+           color = Species))
+```
+
+Aesthetics:
+- X: sepal length
+- Y: petal length
+- Color: species.
+
+---
+# Breaking this down
+
+This still has no geometric representations of the data! What happens if we plot this?
+
+```{r echo = F}
+ggplot(data = iris, 
+       aes(x = Sepal.Length, 
+           y = Petal.Length, 
+           color = Species))
+```
+
+---
+# Breaking this down
+
+The various `geom_` arguments stacked on top give the ways they want the data represented.
+
+```{r eval = F}
+ggplot(data = iris, 
+       aes(x = Sepal.Length, 
+           y = Petal.Length, 
+           color = Species)) +
+  geom_point()
+```
+
+The geoms "inherit" the aesthetics of the parent function.
+
+---
+# Breaking this down
+
+We can stack multiple of these `geom_` arguments:
+
+```{r eval = F}
+ggplot(data = iris, 
+       aes(x = Sepal.Length, 
+           y = Petal.Length, 
+           color = Species)) +
+  geom_point() +
+  geom_smooth(method = 'lm')
+```
+
+---
+# Breaking this down
+
+Question: why are there 3 regression lines?
+
+```{r echo = F}
+ggplot(data = iris, 
+       aes(x = Sepal.Length, 
+           y = Petal.Length, 
+           color = Species)) +
+  geom_point() +
+  geom_smooth(method = 'lm')
+```
