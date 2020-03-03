@@ -36,7 +36,7 @@ output:
 
 library(knitr)
 library(dplyr) # made for this stuff!
-opts_chunk$set(autodep = T, message = F)
+opts_chunk$set(autodep = T, message = F, warning = F)
 
 ```
 

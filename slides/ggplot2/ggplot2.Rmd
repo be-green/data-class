@@ -162,3 +162,43 @@ ggplot(data = iris,
   geom_point() +
   geom_smooth(method = 'lm')
 ```
+
+---
+# Changing scales
+
+Scales control the mapping between `geom_` and `aes()`, so if we want to change the axis scale, we would do this with `scale_` arguments.
+
+```{r eval = FALSE}
+ggplot(data = iris, 
+       aes(x = Sepal.Length, 
+           y = Petal.Length, 
+           color = Species)) +
+  geom_point() +
+  geom_smooth(method = 'lm') +
+  scale_x_log10()
+```
+
+
+---
+# Changing scales
+
+```{r echo = FALSE}
+ggplot(data = iris, 
+       aes(x = Sepal.Length, 
+           y = Petal.Length, 
+           color = Species)) +
+  geom_point() +
+  geom_smooth(method = 'lm') +
+  scale_x_log10()
+```
+
+
+---
+# Summary
+
+- Aesthetics set up the graph
+- Geometries generate representative forms
+- Scales control the mappings between aesthetics and forms
+
+---
+# Questions?

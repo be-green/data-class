@@ -1,0 +1,313 @@
+---
+title: "RMarkdown and Reproducible Research"
+author: "Brice Green"
+institute: "University of Texas at Austin"
+date: "2020-03-02 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+<style type="text/css">
+.big {
+    font-size: 40px;
+}
+.remark-slide-content {
+  font-size: 30px;
+}
+.middle {
+  margin-top: 47%;
+  font-size: 40px;
+  font-weight: bold;
+}
+.small {
+  font-size: 15px;
+}
+</style>
+
+
+```{r setup, include = F}
+
+library(knitr)
+library(dplyr) # made for this stuff!
+opts_chunk$set(autodep = T, message = F, warning = F)
+
+```
+
+
+# What is RMarkdown?
+
+.left[
+  A fully reproducible, multi-language, notebook and reporting framework supported by RStudio.
+]
+
+
+---
+
+# Why RMarkdown?
+
+- Research is complicated
+- Research is confusion
+- You are lazy
+
+---
+
+# Why RMarkdown
+
+> You get asked by your boss to update a chart, but for the life of you, you can't remember where the data came from!
+
+---
+
+# Why RMarkdown
+
+> A reviewer gives you feedback--turns out your standard errors were _all wrong_ and you need to change the methodology. Ok which RA do we trust to run outreg a million times?
+
+---
+
+# Working with Rmarkdown
+
+1. WTF is "markdown"
+1. The RMarkdown Ecosystem
+1. Code chunks and knitr options
+2. WTF is YAML?
+3. Templates
+4. Parameters and automatic reports
+
+---
+
+
+# Markdown
+
+System for producing HTML without having to write `<h1>Title</h1>` for titles, etc.
+
+Meant to be not quite WYSIWYG, but easier to type.
+
+---
+
+# Markdown Syntax
+
+Headers:
+
+* `# Text` for big titles (h1 tags)
+* `## Text` for medium titles (h2 tags)
+* you get the idea
+
+---
+
+
+# Markdown Syntax
+
+Styles:
+
+* `_word_` for _word_
+* `**word**` for **word**
+
+---
+
+# Markdown Syntax
+
+Unordered Lists:
+
+```
+* Item 1
+* Item 2
+    + Item 2a
+    + Item 2b
+```
+
+for
+
+* Item 1
+* Item 2
+    + Item 2a
+    + Item 2b
+
+---
+
+# Markdown Syntax
+
+Ordered lists: 
+
+```
+1. First Item
+1. Second Item
+1. Third Item
+
+```
+
+1. First Item
+1. Second Item
+1. Third Item
+
+---
+
+# Markdown Syntax
+
+* Line breaks via double spaces at end of line
+* Links like `[linked_phrase](https://link.org)`
+* Pictures like `![caption or alt text](images/picture/png)`
+* Block quotes with `> text`
+* Equations (inline) via `$\pi$`
+* Block of equations with two dollar signs
+
+---
+
+# Markdown Syntax
+
+Rstudio -> Help -> Markdown Quick Reference
+
+---
+
+# The RMarkdown Ecosystem
+
+Requirements:
+
+1. Latex
+2. Pandoc
+3. knitr
+4. RMarkdown
+5. Anything special (other packages, extensions)
+
+---
+
+# The RMarkdown Ecosystem
+
+## External requirements
+
+Latex:
+
+Used to compile to PDFs
+
+Pandoc:
+
+Used to convert between file types (e.g. Word, PDF, HTML)
+
+
+---
+
+# The Rmarkdown Ecosystem
+## R packages
+
+knitr: R package that greatly extended the ability to run code within a text document, allowing for complicated research reports
+
+rmarkdown: R package that extends knitr
+
+extra stuff: extensions or template packages like `tufte` or `xaringan`
+
+
+---
+
+# Code Chunks and Options
+
+RMarkdown lets you write code inside of text! How does it do that?
+
+What was the markdown format for "code"?
+
+---
+
+# Code Chunks and Options
+
+RMarkdown extends markdown's code syntax by letting you specify a language and processing options within the chunk of code, like so:
+
+```
+{r echo = T, warning = F, fig.width = 10 }
+
+```
+
+---
+
+# Code Chunks and Options
+
+* echo: whether to print code
+* eval: whether to run the code
+* include: whether to include any kind of output
+* warning: whether to print warnings
+* error: whether to print errors
+* fig.width: width of printed figure
+* fig.height: height of printed figure
+* results: how knitr should post-process output during document conversion
+* A WHOLE LOT MORE -> see `knitr::opts_chunk$get()`
+
+---
+
+# Quick sidenote
+
+* There are lots of resources on rmarkdown
+  + [Rmarkdown book](https://bookdown.org/yihui/rmarkdown/)
+  + [Rmarkdown website](https://rmarkdown.rstudio.com/)
+
+---
+
+# WTF is YAML?
+
+All that stuff at the top of an rmarkdown document is "YAML"
+
+> Yet Another Markup Language
+
+---
+
+# WTF is YAML
+
+This helps process how the documents get compiled. For example, title gets shoved in the "title" slot for a pandoc template.
+
+---
+
+# WTF is YAML
+
+YAML syntax:
+
+```yaml 
+parameter1: argument
+parameter2:
+  deeper_parameters:
+    list: t
+    output: 'yes'
+    etc: "ok we get the idea"
+```
+
+---
+
+# WTF is YAML
+
+Understanding how YAML works can help debug some weird problems! 
+
+RMarkdown takes the arguments from the YAML info and passes it to `rmarkdown::render()`, which compiles the document.
+
+Subparameters get passed to 
+
+`rmarkdown::html_document()` or `rmarkdown::pdf_document()`
+
+---
+
+# Templates
+
+Cool packages that extend base rmarkdown:
+
+- [tufte](https://rstudio.github.io/tufte/)
+- [xaringan](https://slides.yihui.org/xaringan/#1)
+- [blogdown](https://bookdown.org/yihui/blogdown/)
+- [bookdown](https://bookdown.org/)
+
+---
+
+# Templates
+
+You can also make your own! I did this for my firm to allow us to make pretty, branded documents.
+
+I did this after reading about how [airbnb did it](https://medium.com/airbnb-engineering/using-r-packages-and-education-to-scale-data-science-at-airbnb-906faa58e12d) and it was easier than I expected.
+
+We can talk about building packages a different time, but it is a _very_ convenient workflow that I highly recommend.
+
+---
+
+# Parameterized Reports
+
+You can also [use variables in the YAML section for your own presentations and reports](https://bookdown.org/yihui/rmarkdown/parameterized-reports.html)! 
+
+
+
