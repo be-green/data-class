@@ -10,6 +10,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+    ratio: 16:10
 ---
 
 
@@ -86,6 +87,9 @@ opts_chunk$set(autodep = T, message = F, warning = F)
 System for producing HTML without having to write `<h1>Title</h1>` for titles, etc.
 
 Meant to be not quite WYSIWYG, but easier to type.
+
+$$A = \pi r^2$$
+
 
 ---
 

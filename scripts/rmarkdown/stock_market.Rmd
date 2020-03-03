@@ -1,0 +1,30 @@
+---
+title: "Stock Market"
+author: "Brice Green"
+date: "3/3/2020"
+output: 
+  html_document:
+    theme: "yeti"
+params:
+  ticker: "ATVI"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
+```
+
+Here is performance of `r params$ticker`.
+
+```{r}
+library(quantmod)
+library(dygraphs)
+
+stock_mkt <- getSymbols(Symbols = params$ticker, auto.assign = F)
+
+stock_mkt <- tail(stock_mkt, n=30)
+
+dygraphs::dygraph(OHLC(stock_mkt)) %>% 
+  dygraphs::dyCandlestick() %>% 
+  dyRangeSelector()
+```
+
